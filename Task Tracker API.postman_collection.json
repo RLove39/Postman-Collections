@@ -1,0 +1,308 @@
+{
+  "info": {
+    "_postman_id": "c5d2c7b8-58c8-4641-ace7-8d8cf4a249ab",
+    "name": "Task Tracker API",
+    "description": "A mock API for creating, updating, and deleting tasks.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53686768"
+  },
+  "item": [
+    {
+      "name": "GET All Tasks",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/tasks",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "tasks"
+          ]
+        },
+        "description": "Returns the full list of tasks.\n\n**What this endpoint does**\n- Retrieves all tasks currently stored in the Task Tracker service.\n- Typical use: populate a task list UI or run regression checks against the task inventory.\n\n**Authorization**\n- Auth is **not configured in this request** (no auth/headers are set here).\n- If your API deployment requires authentication, add it at the collection level or here (common patterns: `Authorization: Bearer <token>`). If auth is required and missing/invalid, expect `401 Unauthorized` or `403 Forbidden`.\n\n**Query parameters**\n- None.\n\n**Request**\n- Method: `GET`\n- URL: `{{baseURL}}/tasks`\n\n**Example 200 response**\n```json\n[\n  {\n    \"id\": \"1\",\n    \"title\": \"Buy groceries\",\n    \"completed\": false\n  },\n  {\n    \"id\": \"2\",\n    \"title\": \"Write tests\",\n    \"completed\": true\n  }\n]\n```\n\n**Common status codes**\n- `200 OK` — Returns an array of task objects (may be empty).\n- `401 Unauthorized` — Authentication required or token is missing/invalid (if enabled).\n- `403 Forbidden` — Authenticated but not allowed to list tasks (if enabled).\n- `500 Internal Server Error` — Unexpected server failure.\n"
+      },
+      "response": [
+        {
+          "name": "200 OK",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/tasks",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "tasks"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Update Jira tickets\",\n        \"completed\": false\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "POST New Task",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 201\", function () {\r",
+              "    pm.response.to.have.status(201);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"title\": \"Update Jira tickets\",\r\n    \"completed\": false\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}/tasks",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "tasks"
+          ]
+        },
+        "description": "Creates a new task in the Task Tracker.\n\n**Endpoint**: `POST {{baseURL}}/tasks`\n\n## What it does\nCreates a task record with a title and completion state and returns the newly-created task.\n\n## Auth\nThis request currently has **no auth configured in Postman**.\n\n- If your API is protected, configure auth at the collection/request level (e.g., Bearer token).\n\n## Required headers\n- `Content-Type: application/json`\n- `Accept: application/json` (recommended)\n\n## Request body\n### Schema\n```json\n{\n  \"title\": \"string\",        // required\n  \"completed\": true          // optional (defaults to false if omitted)\n}\n```\n\n### Example\n```json\n{\n  \"title\": \"Update Jira tickets\",\n  \"completed\": false\n}\n```\n\n## Responses\n### 201 Created — task created\n**Schema** (typical):\n```json\n{\n  \"id\": \"string|number\",\n  \"title\": \"string\",\n  \"completed\": true\n}\n```\n\n**Example**:\n```json\n{\n  \"id\": 123,\n  \"title\": \"Update Jira tickets\",\n  \"completed\": false\n}\n```\n\n## Common status codes / errors\n- **201 Created**: Task created successfully.\n- **400 Bad Request**: Invalid JSON or missing/invalid fields (e.g., `title` empty).\n- **401 Unauthorized / 403 Forbidden**: Missing/invalid credentials (if auth is enabled on the API).\n- **415 Unsupported Media Type**: Missing/incorrect `Content-Type`.\n- **500 Internal Server Error**: Unexpected server error."
+      },
+      "response": [
+        {
+          "name": "201 Example Response",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Update Jira tickets\",\r\n    \"completed\": false\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/tasks",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "tasks"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            }
+          ],
+          "cookie": [],
+          "body": "{\r\n    \"id\":\"2\",\r\n    \"title\":\"New Task\",\r\n    \"completed\":false\r\n}"
+        }
+      ]
+    },
+    {
+      "name": "PUT Update Task",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"title\": \"Updated Task\",\r\n    \"completed\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}/tasks/{{taskId}}",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "tasks",
+            "{{taskId}}"
+          ]
+        },
+        "description": "### Purpose\nUpdate an existing task by ID (e.g., change its title and/or completion status).\n\n---\n\n### Base URL\nThis request uses the environment variable `{{baseURL}}` so you can switch between local/dev/staging without editing the request.\n\nExample:\n```\n{{baseURL}} = http://localhost:3000\n```\n\n---\n\n### Endpoint\n**PUT** `{{baseURL}}/tasks/{{taskId}}`\n\n#### Path parameters\n- `taskId` (string | integer) — The unique identifier of the task to update.\n\n> Ensure `{{taskId}}` is set (collection/environment/iteration variable) before sending the request.\n\n---\n\n### Request headers\nTypical headers:\n- `Content-Type: application/json`\n- `Accept: application/json` (optional)\n\n(If your API requires auth, add the appropriate `Authorization` header in your environment or request auth settings.)\n\n---\n\n### Request body\nSend a JSON payload containing the fields to update.\n\n#### Schema (JSON)\n```json\n{\n  \"title\": \"string\",\n  \"completed\": true\n}\n```\n\n- `title` (string) — Updated task title.\n- `completed` (boolean) — Completion status.\n\n#### Example\n```json\n{\n  \"title\": \"Updated Task\",\n  \"completed\": false\n}\n```\n\n---\n\n### Response expectations\n- **200 OK** — Task updated successfully. Response body typically returns the updated task resource.\n- **400 Bad Request** — Invalid input (e.g., missing/invalid fields, wrong data types).\n- **404 Not Found** — No task exists for the provided `taskId`.\n\n---\n\n### How to run in Postman\n1. Select the **Task Tracker Environment** (or any environment that defines `baseURL`).\n2. Set `taskId` (as an environment or collection variable) to the task you want to update.\n3. Review the JSON body and click **Send**."
+      },
+      "response": [
+        {
+          "name": "200 OK Example Response",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Updated Task\",\r\n    \"completed\": false\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/tasks/{{taskId}}",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "tasks",
+                "{{taskId}}"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            }
+          ],
+          "cookie": [
+            {
+              "expires": "Invalid Date",
+              "domain": "",
+              "path": ""
+            }
+          ],
+          "body": "{\r\n    \"id\":1,\r\n    \"title\": \"Updated Task\",\r\n    \"completed\": true\r\n\r\n}"
+        }
+      ]
+    },
+    {
+      "name": "DELETE Remove a task",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 204\", function () {\r",
+              "    pm.response.to.have.status(204);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/tasks/{{taskId}}",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "tasks",
+            "{{taskId}}"
+          ]
+        },
+        "description": "Deletes (removes) a single task by its ID.\n\n**Method:** `DELETE`\n**URL:** `{{baseURL}}/tasks/{{taskId}}`\n\n## Path parameters\n- `taskId` *(required)*: The unique identifier of the task to delete.\n\n## Query parameters\nNone.\n\n## Request body\nNone.\n\n## Authentication\nAuth requirements are not specified in this request. If your API is secured, add the appropriate auth (for example, Bearer token) at the collection or request level.\n\n## Example request\n```http\nDELETE {{baseURL}}/tasks/{{taskId}}\n```\n\n## Example response\nA successful delete commonly returns **204 No Content** with an empty body.\n\n```http\nHTTP/1.1 204 No Content\n```\n\n## Common status codes\n- **204 No Content**: Task deleted successfully.\n- **400 Bad Request**: Invalid `taskId` format.\n- **401 Unauthorized** / **403 Forbidden**: Missing/invalid credentials or insufficient permissions (if auth is enforced).\n- **404 Not Found**: Task with the given `taskId` does not exist.\n- **409 Conflict**: Task cannot be deleted due to a constraint (implementation-specific).\n- **500 Internal Server Error**: Unexpected server error."
+      },
+      "response": [
+        {
+          "name": "204 No Content Example Response",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}/tasks/{{taskId}}",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "tasks",
+                "{{taskId}}"
+              ]
+            }
+          },
+          "status": "No Content",
+          "code": 204,
+          "_postman_previewlanguage": null,
+          "header": null,
+          "cookie": [],
+          "body": null
+        }
+      ]
+    }
+  ]
+}
