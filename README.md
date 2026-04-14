@@ -1,4 +1,4 @@
-# QA & API Testing Portfolio
+# Postman & API Testing Portfolio
 Welcome to my project repository. I am a Computer Engineering graduate transitioning into **Software Quality Assurance**, with a focus on API testing and automation.
 
 ## 📁 Projects
