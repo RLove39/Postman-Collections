@@ -19,7 +19,7 @@ This project was completed as part of the **Postman API Beginner Learning Pathwa
 ## 🛠️ How to Review
 1. Import the `Task_Tracker_Collection.json` file into Postman.
 2. Ensure the **Task Tracker Environment** is selected (to enable `baseURL` and `taskId` variables).
-3. Open the **Tests** tab on any request to view my JavaScript validation logic.
+3. Open the **Scripts** tab on any request to view my JavaScript validation logic.
 
 ---
 *This project serves as a practical demonstration of my readiness for a Junior QA / API Tester role.*
