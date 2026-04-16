@@ -11,5 +11,5 @@ Welcome to my project repository. I am a Computer Engineering graduate transitio
 *   **Languages:** JavaScript (Postman Scripts), C/C++ (Computer Engineering Background).
 
 ---
-**Connect with me:** [(https://www.linkedin.com/in/ryan-love-0165ba163/)]
+**Connect with me:** (https://www.linkedin.com/in/ryan-love-0165ba163/)
 
