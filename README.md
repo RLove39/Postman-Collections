@@ -2,7 +2,7 @@
 Welcome to my project repository. I am a Computer Engineering graduate transitioning into **Software Quality Assurance**, with a focus on API testing and automation.
 
 ## 📁 Projects
-*   **[Task Tracker API (Postman Academy)](./Postman-Beginner-Path/):** A mock API implementation featuring CRUD operations, mock servers, and automated test scripts.
+*   **[Task Tracker Mock API (Postman Academy)](https://academy.postman.com/path/api-beginner):** A mock API implementation featuring CRUD operations, mock servers, and automated test scripts.
 *   *(More projects coming soon!)*
 
 ## 🛠️ Technical Skills
